@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import Curso
+from django.contrib import messages
 
 
 def home(request):
@@ -14,12 +15,16 @@ def registrarCurso(request):
 
     Curso.objects.create(
         codigo=codigo, nombre=nombre, creditos=creditos)
+    messages.success(request, '¡Curso registrado!')
     return redirect('/')
 
 
 def eliminarCurso(request, codigo):
     curso = Curso.objects.get(codigo=codigo)
     curso.delete()
+
+    messages.success(request, '¡Curso eliminado!')
+
     return redirect('/')
 
 
@@ -37,4 +42,7 @@ def edicionCurso(request):
     curso.nombre = nombre
     curso.creditos = creditos
     curso.save()
+
+    messages.success(request, '¡Curso editado!')
+
     return redirect('/')
