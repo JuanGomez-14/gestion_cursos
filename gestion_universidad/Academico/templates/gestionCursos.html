@@ -60,6 +60,7 @@
             <th>Codigo</th>
             <th>Nombre</th>
             <th>Creditos</th>
+            <th colspan="2">Opciones</th>
           </tr>
         </thead>
         <tbody>
@@ -68,6 +69,16 @@
             <td>{{curso.codigo}}</td>
             <td>{{curso.nombre}}</td>
             <td>{{curso.creditos}}</td>
+            <td>
+              <a href="edicionCurso/{{curso.codigo}}" class="btn btn-primary"
+                >Editar</a
+              >
+            </td>
+            <td>
+              <a href="eliminarCurso/{{curso.codigo}}" class="btn btn-danger"
+                >Eliminar</a
+              >
+            </td>
           </tr>
           {% endfor %}
         </tbody>
