@@ -5,7 +5,8 @@
     <h2>Gestión de cursos</h2>
     <div class="card py-1">
       <div class="card-body">
-        <form action="" method="POST">
+        <form action="/registrarCurso/" method="POST">
+          {% csrf_token %}
           <div class="form-group">
             <input
               type="text"
@@ -32,7 +33,7 @@
           </div>
           <div class="form-group">
             <input
-              type="text"
+              type="number"
               id="numCreditos"
               name="numCreditos"
               class="form-control"
