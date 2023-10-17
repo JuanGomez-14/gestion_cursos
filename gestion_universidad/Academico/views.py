@@ -13,6 +13,14 @@ def registrarCurso(request):
     nombre = request.POST['txtNombre']
     creditos = request.POST['numCreditos']
 
+    allCursos = Curso.objects.all()
+
+    for curso1 in allCursos:
+        print(curso1.codigo)
+        if codigo == curso1.codigo:
+            messages.warning(request, '¡El código ya está en uso!')
+            return redirect('/')
+
     Curso.objects.create(
         codigo=codigo, nombre=nombre, creditos=creditos)
     messages.success(request, '¡Curso registrado!')
