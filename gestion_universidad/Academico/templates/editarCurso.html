@@ -1,22 +1,23 @@
-{% extends './base.html' %} {% block title %} Gestión de Cursos {% endblock %}
+{% extends './base.html' %} {% block title %} Editar curso {% endblock %}
 {% block body %}
 <div class="row">
-  <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-    <h2>Gestión de cursos</h2>
+  <div class="col-md-4 offset-md-4">
+    <h2>Editar curso</h2>
     <div class="card py-1">
       <div class="card-body">
-        <form action="/registrarCurso/" method="POST">
+        <form action="/edicionCurso/" method="POST">
           {% csrf_token %}
           <div class="form-group">
             <input
               type="text"
               id="txtCodigo"
               name="txtCodigo"
+              value="{{curso.codigo}}"
               class="form-control"
               placeholder="Código"
               minlength="1"
               maxlength="8"
-              required
+              readonly
             />
           </div>
           <div class="form-group">
@@ -24,6 +25,7 @@
               type="text"
               id="txtNombre"
               name="txtNombre"
+              value="{{curso.nombre}}"
               class="form-control"
               placeholder="Nombre"
               minlength="2"
@@ -36,6 +38,7 @@
               type="number"
               id="numCreditos"
               name="numCreditos"
+              value="{{curso.creditos}}"
               class="form-control"
               placeholder="Creditos"
               minlength="1"
@@ -49,40 +52,6 @@
           </div>
         </form>
       </div>
-    </div>
-  </div>
-  <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-    <h1>Todos los cursos</h1>
-    <div class="table-responsive py-1">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Codigo</th>
-            <th>Nombre</th>
-            <th>Creditos</th>
-            <th colspan="2">Opciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for curso in cursos %}
-          <tr>
-            <td>{{curso.codigo}}</td>
-            <td>{{curso.nombre}}</td>
-            <td>{{curso.creditos}}</td>
-            <td>
-              <a href="editarCurso/{{curso.codigo}}" class="btn btn-primary"
-                >Editar</a
-              >
-            </td>
-            <td>
-              <a href="eliminarCurso/{{curso.codigo}}" class="btn btn-danger"
-                >Eliminar</a
-              >
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
     </div>
   </div>
 </div>
